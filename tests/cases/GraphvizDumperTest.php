@@ -2,8 +2,8 @@
 
 namespace Tests\Mikulas\PhpParser;
 
-use PhpParser;
 use Mikulas\PhpParser\GraphvizDumper;
+use PhpParser;
 use Tester\Assert;
 
 require __DIR__ . '/../../vendor/autoload.php';
