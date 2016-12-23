@@ -21,7 +21,7 @@ class GraphvizDumper
 	{
 		assert($node instanceof Node || is_array($node));
 
-		$root = new DotNode('root', [DotNode::OPT_LABEL => '""']);
+		$root = new DotNode('root', [DotNode::OPT_LABEL => '""', 'shape' => 'circle']);
 		$dotNodes = $this->convert($node);
 		foreach ($dotNodes as $dot) {
 			$root->addChild($dot);
