@@ -82,11 +82,12 @@ class GraphvizDumper
 				} else {
 					$sublabel = $value;
 				}
-			} else {
-				if ($value instanceof Node || is_array($value)) {
-					foreach ($this->convert($value) as $child) {
-						$dot->addChild($child);
-					}
+			} elseif ($node instanceof Node\Name) {
+				$sublabel = $this->getSublabel($node);
+
+			} elseif ($value instanceof Node || is_array($value)) {
+				foreach ($this->convert($value) as $child) {
+					$dot->addChild($child);
 				}
 
 				$sublabel = $this->getSublabel($node);
@@ -100,10 +101,15 @@ class GraphvizDumper
 
 	private function getSublabel(Node $node): ?string
 	{
-		if ($node instanceof Node\Stmt\Function_) {
+		if ($node instanceof Node\Name) {
+			return implode(' ', $node->parts);
+
+		} elseif ($node instanceof Node\Stmt\Function_) {
 			return $node->name;
+
 		} elseif ($node instanceof Node\Param) {
 			return $node->type . ' ' . $node->name;
+
 		}
 		return NULL;
 	}
