@@ -6,12 +6,16 @@
         "nikic/php-parser": "^3.0"
     },
     "require-dev": {
-        "nette/tester": "^1.7"
+        "nette/tester": "^1.7",
+        "symfony/console": "^3.2"
     },
     "autoload": {
         "psr-4": {
             "Mikulas\\PhpParser\\": "src/Mikulas/PhpParser"
         }
+    },
+    "suggest": {
+        "symfony/console": "to visualize any source file interactively from terminal"
     },
     "license": "BSD-3-Clause",
     "authors": [
