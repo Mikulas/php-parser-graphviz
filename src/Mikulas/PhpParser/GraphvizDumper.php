@@ -88,7 +88,7 @@ class GraphvizDumper
 	private function getSublabel(Node $node): ?string
 	{
 		if ($node instanceof Node\Name) {
-			return implode(' ', $node->parts);
+			return implode('\\', $node->parts);
 
 		} elseif ($node instanceof Node\Stmt\Function_) {
 			return $node->name;
@@ -98,6 +98,16 @@ class GraphvizDumper
 
 		} elseif ($node instanceof Node\Expr\Variable) {
 			return $node->name;
+
+		} elseif ($node instanceof Node\Scalar) {
+			if ($node instanceof Node\Scalar\LNumber
+			|| $node instanceof Node\Scalar\String_) {
+				return (string) $node->value;
+			}
+
+			if ($node instanceof Node\Scalar\MagicConst) {
+				return $node->getName();
+			}
 		}
 
 		return NULL;
