@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php declare(strict_types = 1);
+
+use Mikulas\PhpParser\GraphvizDumper;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+
+if ($argc !== 2) {
+	fwrite(STDERR, "Usage: $argv[0] file\n");
+	exit(1);
+}
+$file = $argv[1];
+
+if (!is_readable($file)) {
+	fwrite(STDERR, "Cannot read file '$file'.\n");
+	exit(2);
+}
+
+$parser = (new PhpParser\ParserFactory)->create(PhpParser\ParserFactory::PREFER_PHP7);
+$dumper = new GraphvizDumper;
+
+$stmts = $parser->parse(file_get_contents($file));
+echo $dumper->dump($stmts);

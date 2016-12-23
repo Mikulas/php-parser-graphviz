@@ -17,6 +17,7 @@
     "suggest": {
         "symfony/console": "to visualize any source file interactively from terminal"
     },
+    "bin": ["bin/phpparser-visualize"],
     "license": "BSD-3-Clause",
     "authors": [
         {
