@@ -21,16 +21,17 @@ class GraphvizDumper
 	{
 		assert($node instanceof Node || is_array($node));
 
+		$root = new DotNode('root', [DotNode::OPT_LABEL => '""']);
 		$dotNodes = $this->convert($node);
+		foreach ($dotNodes as $dot) {
+			$root->addChild($dot);
+		}
+
 		$out = "digraph G {\n";
 		$out .= "    ";
-		foreach ($dotNodes as $dot) {
-			$out .= str_replace("\n", "\n    ", $dot->getNodes());
-		}
+		$out .= str_replace("\n", "\n    ", $root->getNodes());
 		$out .= "\n    ";
-		foreach ($dotNodes as $dot) {
-			$out .= str_replace("\n", "\n    ", $dot->getRelations());
-		}
+		$out .= str_replace("\n", "\n    ", $root->getRelations());
 		$out .= "\n}\n";
 		return $out;
 	}
