@@ -1,0 +1,17 @@
+digraph G {
+    "%a%" [label=<Stmt_Function<BR /><FONT POINT-SIZE="10">add</FONT>>];
+    "%a%" [label=<Param<BR /><FONT POINT-SIZE="10"> a</FONT>>];
+    "%a%" [label=<Param<BR /><FONT POINT-SIZE="10"> b</FONT>>];
+    "%a%" [label=Stmt_Return];
+    "%a%" [label=Expr_BinaryOp_Plus];
+    "%a%" [label=<Expr_Variable<BR /><FONT POINT-SIZE="10">a</FONT>>];
+    "%a%" [label=<Expr_Variable<BR /><FONT POINT-SIZE="10">b</FONT>>];
+
+    "%a%" -> "%a%"
+    "%a%" -> "%a%"
+    "%a%" -> "%a%"
+    "%a%" -> "%a%"
+    "%a%" -> "%a%"
+    "%a%" -> "%a%"
+
+}

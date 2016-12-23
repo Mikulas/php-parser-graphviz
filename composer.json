@@ -1,0 +1,24 @@
+{
+    "name": "mikulas/php-parser-graphviz",
+    "description": "Graphviz AST dumper for nikic/php-parser.",
+    "type": "library",
+    "require": {
+        "nikic/php-parser": "^3.0"
+    },
+    "require-dev": {
+        "nette/tester": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mikulas\\PhpParser\\": "src/Mikulas/PhpParser"
+        }
+    },
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Mikulas Dite",
+            "email": "mikulas.dite@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
