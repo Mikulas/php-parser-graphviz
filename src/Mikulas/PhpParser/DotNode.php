@@ -23,7 +23,9 @@ class DotNode
 	public function __construct(string $id, array $options = [])
 	{
 		$this->id = $id;
-		$this->options = $options;
+		$this->options = $options + [
+			'shape' => 'box',
+		];
 	}
 
 
@@ -40,7 +42,7 @@ class DotNode
 		$label = $attrs[self::OPT_LABEL];
 		if (!empty($attrs[self::OPT_SUBLABEL])) {
 			$sub = $attrs[self::OPT_SUBLABEL];
-			$attrs[self::OPT_LABEL] = "<$label<BR /><FONT POINT-SIZE=\"10\">$sub</FONT>>";
+			$attrs[self::OPT_LABEL] = "<$label<BR /><FONT POINT-SIZE=\"10\" FACE=\"Courier\">$sub</FONT>>";
 		}
 		unset($attrs[self::OPT_SUBLABEL]);
 
@@ -54,7 +56,7 @@ class DotNode
 		foreach ($this->getAttributes() as $option => $value) {
 			$keys[] = "$option=$value";
 		}
-		$out = '"' . $this->id . '" [' . implode(',', $keys) . "];\n";
+		$out = '"' . $this->id . '" [' . implode(' ', $keys) . "];\n";
 
 		foreach ($this->children as $child) {
 			$out .= $child->getNodes();
